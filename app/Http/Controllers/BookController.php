@@ -10,6 +10,5 @@ class BookController extends Controller
     public function index(Request $req)
     {
         $req->session()->flush();
-        dd(Auth::user());
     }
 }
