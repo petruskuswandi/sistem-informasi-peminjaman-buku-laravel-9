@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 // Example Routes
 Route::view('/', 'landing');
-Route::match(['get', 'post'], '/dashboard', function(){
+Route::match(['get', 'post'], '/dashboard', function () {
     return view('dashboard');
-});
+})->middleware('auth');
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticating']);
+Route::get('/register', [AuthController::class, 'register']);
+
 Route::view('/pages/slick', 'pages.slick');
 Route::view('/pages/datatables', 'pages.datatables');
 Route::view('/pages/blank', 'pages.blank');
