@@ -95,7 +95,7 @@
                                     We're very happy you are joining our community!
                                 </p>
                                 <p class="font-size-h5 text-white">
-                                    <i class="fa fa-angles-right"></i> Create your account today and receive 50% off.
+                                    <i class="fa fa-angles-right"></i> Embark on a journey of infinite knowledge with our online library—a single portal to a multitude of books, ideas, and inspiration.
                                 </p>
                                 <p class="font-italic text-white-op">
                                     Copyright &copy; <span class="js-year-copy"></span>

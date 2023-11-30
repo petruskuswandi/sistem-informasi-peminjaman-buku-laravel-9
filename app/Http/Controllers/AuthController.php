@@ -33,6 +33,7 @@ class AuthController extends Controller
                 return redirect('/login');
             }
 
+            // $req->session()->regenerate();
             if (Auth::user()->role_id == 1) {
                 return redirect('dashboard');
             }
@@ -40,8 +41,6 @@ class AuthController extends Controller
             if (Auth::user()->role_id == 2) {
                 return redirect('profile');
             }
-            // $req->session()->regenerate();
-            // return redirect()->intended('dashboard');
         }
         Session::flash('status', 'failed');
         Session::flash('message', 'Login Invalid');
