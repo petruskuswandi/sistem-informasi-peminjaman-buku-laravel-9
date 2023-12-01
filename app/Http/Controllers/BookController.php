@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
-    public function index(Request $req)
+    public function index()
     {
-        $req->session()->flush();
+        dd('ini halaman books');
     }
 }

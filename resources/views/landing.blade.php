@@ -1,5 +1,7 @@
 @extends('layouts.simple')
-
+@section('title')
+    Halaman Landing
+@endsection
 @section('content')
     <!-- Hero -->
     <div class="bg-white bg-pattern hero-bubbles" style="background-image: url('{{ asset('/media/various/bg-pattern-inverse.png') }}');">

@@ -1,5 +1,7 @@
 @extends('layouts.backend')
-
+@section('title')
+    Halaman Data Table
+@endsection
 @section('css_before')
     <!-- Page JS Plugins CSS -->
     <link rel="stylesheet" href="{{ asset('js/plugins/datatables/dataTables.bootstrap4.css') }}">

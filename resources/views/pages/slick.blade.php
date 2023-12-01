@@ -1,5 +1,7 @@
 @extends('layouts.backend')
-
+@section('title')
+    Halaman Slick Slider
+@endsection
 @section('css_before')
     <link rel="stylesheet" href="{{ asset('js/plugins/slick/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('js/plugins/slick/slick-theme.css') }}">

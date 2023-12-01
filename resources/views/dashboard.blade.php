@@ -1,5 +1,7 @@
 @extends('layouts.backend')
-
+@section('title')
+    Halaman Dashboard
+@endsection
 @section('content')
     <!-- Page Content -->
     <div class="content">

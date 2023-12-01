@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function profile(Request $req)
+    public function profile()
     {
-        $req->session()->flush();
+        dd('ini halaman profile');
     }
 }

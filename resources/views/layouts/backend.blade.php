@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>Codebase - Bootstrap 4 Admin Template &amp; UI Framework</title>
+        <title>@yield('title')</title>
 
         <meta name="description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
         <meta name="author" content="pixelcave">
@@ -185,7 +185,7 @@
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="link-effect text-dual-primary-dark" href="javascript:void(0)">
+                                        <a class="link-effect text-dual-primary-dark" href="/logout">
                                             <i class="si si-logout"></i>
                                         </a>
                                     </li>
@@ -194,6 +194,7 @@
                             <!-- END Visible only in normal mode -->
                         </div>
                         <!-- END Side User -->
+                        {{ Auth::user()->role_id }}
 
                         <!-- Side Navigation -->
                         <div class="content-side content-side-full">
