@@ -39,12 +39,17 @@
             <table class="table table-hover table-vcenter">
                 <thead>
                     <tr>
-                        <th class="text-center" style="width: 100px;"></th>
+                        <th class="text-center" style="width: 100px;">No.</th>
                         <th>Name</th>
                         <th class="text-center" style="width: 200px;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @if (count($categories) < 1)
+                        <tr>
+                            <td colspan="3" style="text-align: center">No Data</td>
+                        </tr>
+                    @endif
                     @foreach ($categories as $item)
                         <tr>
                             <th class="text-center" scope="row">{{ $loop->iteration }}</th>
