@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone');
             $table->text('address');
-            $table->string('status')->default('inactive');
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }
