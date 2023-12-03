@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [UserController::class, 'profile'])->middleware('only_client');
 
     Route::get('/books', [BookController::class, 'index']);
+    Route::get('/books-add', [BookController::class, 'add']);
 
     Route::get('/category', [CategoryController::class, 'index']);
     Route::get('/category-add', [CategoryController::class, 'add']);

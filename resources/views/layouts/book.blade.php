@@ -30,7 +30,7 @@
         <div class="mt-3 block block-rounded">
             <div class="block-header block-header-default d-flex justify-content-end">
                 <div class="block-options">
-                    <a href="/category-add">
+                    <a href="/books-add">
                         <button type="button" class="btn btn-primary"><i class="fa fa-plus opacity-50 me-1"></i>
                             Add Data</button>
                     </a>

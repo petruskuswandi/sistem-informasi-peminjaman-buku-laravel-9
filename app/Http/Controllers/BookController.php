@@ -11,6 +11,11 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
-        return view("layouts.book",["books"=> $books]);
+        return view("layouts.book", ["books" => $books]);
+    }
+
+    public function add()
+    {
+        return view("layouts.book-add");
     }
 }
