@@ -214,7 +214,7 @@
                                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
                                     <ul>
                                         <li>
-                                            <a @if (request()->is('books')) class="active" @endif
+                                            <a @if (request()->is('books*')) class="active" @endif
                                                 href="/books">Books</a>
                                         </li>
                                         <li>
