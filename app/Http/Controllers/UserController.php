@@ -36,4 +36,15 @@ class UserController extends Controller
 
         return redirect('/user-detail/' . $slug)->with("status", "Approve User Succesfully");
     }
+    public function delete($slug)
+    {
+        $user = User::where("slug", $slug)->first();
+        return view("layouts.user-ban", ["user"=> $user]);
+    }
+    public function destroy($slug)
+    {
+        $user = User::where("slug", $slug)->first();
+        $user->delete();
+        return redirect("/users")->with("deleteStatus", "Ban User Succesfully");
+    }
 }
