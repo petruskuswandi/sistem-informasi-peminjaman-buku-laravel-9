@@ -47,7 +47,7 @@ class BookController extends Controller
     public function update(Request $request, $slug)
     {
         $newName = '';
-        if ($request->file('image')!= null) {
+        if ($request->file('image') != null) {
             dd('gambar');
             $extension = $request->file('image')->getClientOriginalExtension();
             $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
@@ -59,12 +59,16 @@ class BookController extends Controller
         $book->categories()->sync($request->categories);
         $book->update($request->all());
         return redirect("/books")->with("status", "Book Updated Succesfully");
-        // // dd($request->all());
-        // $validated = $request->validate(['name' => 'required|unique:categories|max:255']);
-
-        // $category = Category::where('slug', $slug)->first();
-        // $category->slug = null;
-        // $category->update($request->all());
-        // return redirect("/category")->with("status", "Category Updated Succesfully");
+    }
+    public function delete($slug)
+    {
+        $book = Book::where("slug", $slug)->first();
+        return view("layouts.book-delete", ["book" => $book]);
+    }
+    public function destroy($slug)
+    {
+        $book = Book::where("slug", $slug)->first();
+        $book->delete();
+        return redirect("/books")->with("deleteStatus", "Book Deleted Succesfully");
     }
 }
