@@ -39,12 +39,22 @@ class UserController extends Controller
     public function delete($slug)
     {
         $user = User::where("slug", $slug)->first();
-        return view("layouts.user-ban", ["user"=> $user]);
+        return view("layouts.user-ban", ["user" => $user]);
     }
     public function destroy($slug)
     {
         $user = User::where("slug", $slug)->first();
         $user->delete();
         return redirect("/users")->with("deleteStatus", "Ban User Succesfully");
+    }
+    public function bannedUser()
+    {
+        $bannedUsers = User::onlyTrashed()->get();
+        return view("layouts.user-banned-list", ['bannedUsers' => $bannedUsers]);
+    }
+    public function restore($slug){
+        $user = User::withTrashed()->where('slug', $slug)->first();
+        $user->restore();
+        return redirect("/users")->with("status", "user Restored Succesfully");
     }
 }
