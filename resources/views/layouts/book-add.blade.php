@@ -1,4 +1,7 @@
 @extends('layouts.backend')
+@section('css_after')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endsection
 @section('title')
     Add Book
 @endsection
@@ -38,6 +41,15 @@
                                 <input class="form-control form-control-alt"type="file" id="image" name="image"
                                     placeholder="Upload Cover Image...">
                             </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="title">Category</label>
+                                <select class="form-control form-select js-select-multiple" id="categories" name="categories[]"
+                                    size="5" multiple>
+                                    @foreach ($categories as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -53,4 +65,14 @@
         </form>
     </div>
     <!-- END Page Content -->
+@endsection
+
+@section('js_after')
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.js-select-multiple').select2();
+        });
+    </script>
 @endsection
