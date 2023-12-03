@@ -22,4 +22,19 @@ class CategoryController extends Controller
         $category = Category::create($request->all());
         return redirect("/category")->with("status", "Category Added Succesfully");
     }
+    public function edit($slug)
+    {
+        $category = Category::where("slug", $slug)->first();
+        return view("layouts.category-edit", ["category"=> $category]);
+    }
+
+    public function update(Request $request, $slug){
+        // dd($request->all());
+        $validated = $request->validate(['name' => 'required|unique:categories|max:255']);
+
+        $category = Category::where('slug', $slug)->first();
+        $category->slug = null;
+        $category->update($request->all());
+        return redirect("/category")->with("status", "Category Updated Succesfully");
+    }
 }

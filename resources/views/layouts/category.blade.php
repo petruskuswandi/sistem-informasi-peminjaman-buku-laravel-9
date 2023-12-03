@@ -25,7 +25,8 @@
             <div class="block-header block-header-default d-flex justify-content-end">
                 <div class="block-options">
                     <a href="/category-add">
-                        <button type="button" class="btn btn-sm btn-primary">Add Data</button>
+                        <button type="button" class="btn btn-primary"><i class="fa fa-plus opacity-50 me-1"></i>
+                        Add Data</button>
                     </a>
                 </div>
             </div>
@@ -43,14 +44,17 @@
                             <th class="text-center" scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $item->name }}</td>
                             <td class="text-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-secondary js-bs-tooltip-enabled"
-                                        data-bs-toggle="tooltip" aria-label="Edit" data-bs-original-title="Edit">
-                                        <i class="fa fa-pencil"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-secondary js-bs-tooltip-enabled"
+                                <div class="btn-group" style="gap: 8px">
+                                    <a href="/category-edit/{{ $item->slug }}">
+                                        <button type="button" class="btn btn-sm btn-alt-warning js-bs-tooltip-enabled"
+                                            data-bs-toggle="tooltip" aria-label="Edit" data-bs-original-title="Edit">
+                                            <i class="fa fa-pencil"></i>
+                                            Edit
+                                        </button></a>
+                                    <button type="button" class="btn btn-sm btn-alt-danger js-bs-tooltip-enabled"
                                         data-bs-toggle="tooltip" aria-label="Delete" data-bs-original-title="Delete">
                                         <i class="fa fa-times"></i>
+                                        Delete
                                     </button>
                                 </div>
                             </td>
