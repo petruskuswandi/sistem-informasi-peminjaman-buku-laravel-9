@@ -9,6 +9,6 @@ class BookController extends Controller
 {
     public function index()
     {
-        dd('ini halaman books');
+        return view("layouts.book");
     }
 }
