@@ -9,7 +9,8 @@ class PublicController extends Controller
 {
     public function index()
     {
+        $categories = Category::all();
         $books = Book::all();
-        return view('book-list', ['books => $books']);
+        return view('book-list', ['books => $books', 'categories'=>$categories]);
     }
 }
