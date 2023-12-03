@@ -18,4 +18,13 @@ class BookController extends Controller
     {
         return view("layouts.book-add");
     }
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'book_code' => 'required|unique:books|max:255',
+            'title' => 'required|max:255',
+        ]);
+        $book = Book::create($request->all());
+        return redirect("/books")->with("status", "Book Added Succesfully");
+    }
 }

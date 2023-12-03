@@ -26,12 +26,12 @@
                             <div class="mb-4">
                                 <label class="form-label" for="code">Code</label>
                                 <input type="text" class="form-control form-control-alt" id="code" name="book_code"
-                                    placeholder="Enter book code...">
+                                    placeholder="Enter book code..." value="{{ old('book_code') }}">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="title">Title</label>
                                 <input type="text" class="form-control form-control-alt" id="title" name="title"
-                                    placeholder="Enter book title...">
+                                    placeholder="Enter book title..." value="{{ old('title') }}">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="cover">Cover</label>

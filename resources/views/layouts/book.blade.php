@@ -40,10 +40,8 @@
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 50px;">No. </th>
-                        <th>Name</th>
                         <th>Code</th>
                         <th>Title</th>
-                        <th>Status</th>
                         <th class="text-center" style="width: 100px;">Actions</th>
                     </tr>
                 </thead>
@@ -56,7 +54,8 @@
                     @foreach ($books as $item)
                         <tr>
                             <th class="text-center" scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->book_code }}</td>
+                            <td>{{ $item->title }}</td>
                             <td class="text-center">
                                 <div class="btn-group" style="gap: 8px">
                                     <a href="/category-edit/{{ $item->slug }}">
