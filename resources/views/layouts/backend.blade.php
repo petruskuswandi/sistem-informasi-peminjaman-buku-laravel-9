@@ -201,65 +201,71 @@
                     <!-- Side Navigation -->
                     <div class="content-side content-side-full">
                         <ul class="nav-main">
-                            @if (Auth::user()->role_id == 1)
-                                <li>
-                                    <a class="{{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
-                                        <i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span>
-                                    </a>
-                                </li>
-                                <li class="nav-main-heading">
-                                    <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
-                                </li>
-                                <li class="{{ request()->is('pages/*') ? ' open' : '' }}">
-                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
-                                    <ul>
-                                        <li>
-                                            <a @if (request()->is('books*')) class="active" @endif
-                                                href="/books">Books</a>
-                                        </li>
-                                        <li>
-                                            <a @if (request()->is('category*')) class="active" @endif
-                                                href="/category">Category</a>
-                                        </li>
-                                        <li>
-                                            <a @if (request()->is('users*')) class="active" @endif
-                                                href="/users">Users</a>
-                                        </li>
-                                        <li>
-                                            <a @if (request()->is('rent-logs')) class="active" @endif
-                                                href="/rent-logs">Rent Log</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-main-heading">
-                                    <span class="sidebar-mini-visible">MR</span><span
-                                        class="sidebar-mini-hidden">More</span>
-                                </li>
-                                <li>
-                                    <a href="/">
-                                        <i class="si si-globe"></i><span class="sidebar-mini-hide">Landing</span>
-                                    </a>
-                                </li>
-                            @else
-                                <li class="nav-main-heading">
-                                    <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
-                                </li>
-                                <li class="{{ request()->is('pages/*') ? ' open' : '' }}">
-                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
-                                    <ul>
-                                        <li>
-                                            <a class="{{ request()->is('pages/datatables') ? ' active' : '' }}" href="/profile">Profile</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-main-heading">
-                                    <span class="sidebar-mini-visible">MR</span><span class="sidebar-mini-hidden">More</span>
-                                </li>
-                                <li>
-                                    <a href="/">
-                                        <i class="si si-globe"></i><span class="sidebar-mini-hide">Landing</span>
-                                    </a>
-                                </li>
+                            @if (Auth::user())
+                                @if (Auth::user()->role_id == 1)
+                                    <li>
+                                        <a class="{{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
+                                            <i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-main-heading">
+                                        <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
+                                    </li>
+                                    <li class="{{ request()->is('pages/*') ? ' open' : '' }}">
+                                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
+                                        <ul>
+                                            <li>
+                                                <a @if (request()->is('books*')) class="active" @endif
+                                                    href="/books">Books</a>
+                                            </li>
+                                            <li>
+                                                <a @if (request()->is('category*')) class="active" @endif
+                                                    href="/category">Category</a>
+                                            </li>
+                                            <li>
+                                                <a @if (request()->is('users*')) class="active" @endif
+                                                    href="/users">Users</a>
+                                            </li>
+                                            <li>
+                                                <a @if (request()->is('rent-logs')) class="active" @endif
+                                                    href="/rent-logs">Rent Log</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-main-heading">
+                                        <span class="sidebar-mini-visible">MR</span><span
+                                            class="sidebar-mini-hidden">More</span>
+                                    </li>
+                                    <li>
+                                        <a href="/">
+                                            <i class="si si-globe"></i><span class="sidebar-mini-hide">Landing</span>
+                                        </a>
+                                    </li>
+                                @else
+                                    <li class="nav-main-heading">
+                                        <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
+                                    </li>
+                                    <li class="{{ request()->is('pages/*') ? ' open' : '' }}">
+                                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
+                                        <ul>
+                                            <li>
+                                                <a class="{{ request()->is('pages/datatables') ? ' active' : '' }}" href="/profile">Profile</a>
+                                                {{-- <a href="/">book-list</a>
+                                                <a href="/logout"></a> Logout</a> --}}
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-main-heading">
+                                        <span class="sidebar-mini-visible">MR</span><span class="sidebar-mini-hidden">More</span>
+                                    </li>
+                                    <li>
+                                        <a href="/">
+                                            <i class="si si-globe"></i><span class="sidebar-mini-hide">Landing</span>
+                                        </a>
+                                    </li>
+                                @endif
+                            {{-- @else
+                                <a href="/login">Login</a> --}}
                             @endif
                         </ul>
                     </div>
