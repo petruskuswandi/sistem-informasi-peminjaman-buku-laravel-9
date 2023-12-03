@@ -14,7 +14,7 @@
                 </ul>
             </div>
         @endif
-        <form action="books-add" method="POST">
+        <form action="books-add" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="block block-rounded">
                 <div class="block-header block-header-default">
@@ -34,8 +34,8 @@
                                     placeholder="Enter book title..." value="{{ old('title') }}">
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="cover">Cover</label>
-                                <input class="form-control form-control-alt"type="file" id="cover" name="cover"
+                                <label class="form-label" for="image">Cover Image</label>
+                                <input class="form-control form-control-alt"type="file" id="image" name="image"
                                     placeholder="Upload Cover Image...">
                             </div>
                         </div>

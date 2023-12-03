@@ -42,7 +42,7 @@
                         <th class="text-center" style="width: 50px;">No. </th>
                         <th>Code</th>
                         <th>Title</th>
-                        <th class="text-center" style="width: 100px;">Actions</th>
+                        <th class="text-center" style="width: 200px;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
