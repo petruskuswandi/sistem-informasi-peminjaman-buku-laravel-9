@@ -51,6 +51,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/category-destroy/{slug}', [CategoryController::class, 'destroy']);
 
     Route::get('/users', [UserController::class, 'index']);
+    Route::get('/registered-users', [UserController::class, 'registeredUsers']);
+
     Route::get('/rent-logs', [RentLogController::class, 'index']);
 });
 

@@ -12,8 +12,15 @@ class UserController extends Controller
         return view('profile');
     }
 
-    public function index(){
-        $users =  User::where('role_id',2)->get();
-        return view('layouts.user', ['users'=>$users]);
+    public function index()
+    {
+        $users =  User::where('role_id', 2)->where('status', 'active')->get();
+        return view('layouts.user', ['users' => $users]);
+    }
+
+    public function registeredUsers()
+    {
+        $registeredUsers = User::where('status', 'inactive')->where('role_d', 2)->get();
+        return view('layouts.registered-users', ['registeredUsers' => $registeredUsers]);
     }
 }

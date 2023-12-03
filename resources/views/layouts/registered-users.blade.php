@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 @section('title')
-    Halaman user
+    Halaman Registered User
 @endsection
 @section('content')
     <!-- Page Content -->
@@ -9,7 +9,7 @@
             <div class="block-content block-content-full">
                 <div class="py-3 text-center">
                     <h1 class="h3 fw-extrabold mb-1">
-                        Users List
+                        New Registered Users List
                     </h1>
                 </div>
             </div>
@@ -50,12 +50,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (count($users) < 1)
+                    @if (count($registeredUsers) < 1)
                         <tr>
-                            <td colspan="6" style="text-align: center">No Data</td>
+                            <td colspan="4" style="text-align: center">No Data</td>
                         </tr>
                     @endif
-                    @foreach ($users as $item)
+                    @foreach ($registeredUsers as $item)
                         <tr>
                             <th class="text-center" scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $item->username }}</td>
