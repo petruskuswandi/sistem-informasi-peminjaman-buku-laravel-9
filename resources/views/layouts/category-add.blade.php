@@ -5,6 +5,15 @@
 @section('content')
     <!-- Page Content -->
     <div class="content">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="category-add" method="POST">
             @csrf
             <div class="block block-rounded">
@@ -16,8 +25,8 @@
                         <div class="col-sm-10 col-md-8">
                             <div class="mb-4">
                                 <label class="form-label" for="name">Category Name</label>
-                                <input type="text" class="form-control form-control-alt" id="name"
-                                    name="name" placeholder="Enter category name...">
+                                <input type="text" class="form-control form-control-alt" id="name" name="name"
+                                    placeholder="Enter category name...">
                             </div>
                         </div>
                     </div>

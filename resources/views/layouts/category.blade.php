@@ -14,6 +14,13 @@
                 </div>
             </div>
         </div>
+        @if (session('status'))
+            <div class="mt-3 block block-rounded">
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            </div>
+        @endif
         <div class="mt-3 block block-rounded">
             <div class="block-header block-header-default d-flex justify-content-end">
                 <div class="block-options">
