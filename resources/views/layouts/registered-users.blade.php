@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 @section('title')
-    Halaman user
+    Halaman Registered User
 @endsection
 @section('content')
     <!-- Page Content -->
@@ -9,7 +9,7 @@
             <div class="block-content block-content-full">
                 <div class="py-3 text-center">
                     <h1 class="h3 fw-extrabold mb-1">
-                        Users List
+                        New Registered Users List
                     </h1>
                 </div>
             </div>
@@ -30,7 +30,7 @@
         <div class="mt-3 block block-rounded">
             <div class="block-header block-header-default d-flex justify-content-end">
                 <div class="block-options" style="gap: 16px">
-                    <a href="/user-banned">
+                    <a href="/users-add">
                         <button type="button" class="btn btn-danger">
                             View Banned User</button>
                     </a>
@@ -50,12 +50,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (count($users) < 1)
+                    @if (count($registeredUsers) < 1)
                         <tr>
-                            <td colspan="6" style="text-align: center">No Data</td>
+                            <td colspan="4" style="text-align: center">No Data</td>
                         </tr>
                     @endif
-                    @foreach ($users as $item)
+                    @foreach ($registeredUsers as $item)
                         <tr>
                             <th class="text-center" scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $item->username }}</td>
@@ -70,7 +70,7 @@
                                 <div class="btn-group" style="gap: 8px">
                                     <a href="/user-detail/{{ $item->slug }}">
                                         <button type="button" class="btn btn-sm btn-alt-warning js-bs-tooltip-enabled"
-                                            data-bs-toggle="tooltip" aria-label="Edit" data-bs-original-title="Edit">
+                                            data-bs-toggle="tooltip" aria-label="Detail" data-bs-original-title="Detail">
                                             <i class="fa fa-user"></i>
                                             Detail
                                         </button></a>

@@ -222,7 +222,7 @@
                                                 href="/category">Category</a>
                                         </li>
                                         <li>
-                                            <a @if (request()->is('users')) class="active" @endif
+                                            <a @if (request()->is('users*')) class="active" @endif
                                                 href="/users">Users</a>
                                         </li>
                                         <li>
