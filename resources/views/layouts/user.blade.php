@@ -74,7 +74,7 @@
                                             <i class="fa fa-user"></i>
                                             Detail
                                         </button></a>
-                                    <a href="/users-delete/{{ $item->slug }}">
+                                    <a href="/user-ban/{{ $item->slug }}">
                                         <button type="button" class="btn btn-sm btn-alt-danger js-bs-tooltip-enabled"
                                             data-bs-toggle="tooltip" aria-label="Delete" data-bs-original-title="Delete">
                                             <i class="fa fa-times"></i>
