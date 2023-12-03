@@ -25,10 +25,11 @@ class CategoryController extends Controller
     public function edit($slug)
     {
         $category = Category::where("slug", $slug)->first();
-        return view("layouts.category-edit", ["category"=> $category]);
+        return view("layouts.category-edit", ["category" => $category]);
     }
 
-    public function update(Request $request, $slug){
+    public function update(Request $request, $slug)
+    {
         // dd($request->all());
         $validated = $request->validate(['name' => 'required|unique:categories|max:255']);
 
@@ -36,5 +37,18 @@ class CategoryController extends Controller
         $category->slug = null;
         $category->update($request->all());
         return redirect("/category")->with("status", "Category Updated Succesfully");
+    }
+
+    public function delete($slug)
+    {
+        $category = Category::where("slug", $slug)->first();
+        return view("layouts.category-delete", ["category" => $category]);
+    }
+
+    public function destroy($slug)
+    {
+        $category = Category::where("slug", $slug)->first();
+        $category->delete();
+        return redirect("/category")->with("deleteStatus", "Category Deleted Succesfully");
     }
 }

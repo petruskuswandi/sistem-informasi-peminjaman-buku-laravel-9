@@ -14,7 +14,13 @@
                 </div>
             </div>
         </div>
-        @if (session('status'))
+        @if (session('deleteStatus'))
+            <div class="mt-3 block block-rounded">
+                <div class="alert alert-danger">
+                    {{ session('deleteStatus') }}
+                </div>
+            </div>
+        @elseif (session('status'))
             <div class="mt-3 block block-rounded">
                 <div class="alert alert-success">
                     {{ session('status') }}
@@ -26,7 +32,7 @@
                 <div class="block-options">
                     <a href="/category-add">
                         <button type="button" class="btn btn-primary"><i class="fa fa-plus opacity-50 me-1"></i>
-                        Add Data</button>
+                            Add Data</button>
                     </a>
                 </div>
             </div>
@@ -51,11 +57,13 @@
                                             <i class="fa fa-pencil"></i>
                                             Edit
                                         </button></a>
-                                    <button type="button" class="btn btn-sm btn-alt-danger js-bs-tooltip-enabled"
-                                        data-bs-toggle="tooltip" aria-label="Delete" data-bs-original-title="Delete">
-                                        <i class="fa fa-times"></i>
-                                        Delete
-                                    </button>
+                                    <a href="/category-delete/{{ $item->slug }}">
+                                        <button type="button" class="btn btn-sm btn-alt-danger js-bs-tooltip-enabled"
+                                            data-bs-toggle="tooltip" aria-label="Delete" data-bs-original-title="Delete">
+                                            <i class="fa fa-times"></i>
+                                            Delete
+                                        </button>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
