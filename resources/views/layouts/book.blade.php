@@ -64,13 +64,13 @@
                             <td>{{ $item->status }}</td>
                             <td class="text-center">
                                 <div class="btn-group" style="gap: 8px">
-                                    <a href="/category-edit/{{ $item->slug }}">
+                                    <a href="/books-edit/{{ $item->slug }}">
                                         <button type="button" class="btn btn-sm btn-alt-warning js-bs-tooltip-enabled"
                                             data-bs-toggle="tooltip" aria-label="Edit" data-bs-original-title="Edit">
                                             <i class="fa fa-pencil"></i>
                                             Edit
                                         </button></a>
-                                    <a href="/category-delete/{{ $item->slug }}">
+                                    <a href="/books-delete/{{ $item->slug }}">
                                         <button type="button" class="btn btn-sm btn-alt-danger js-bs-tooltip-enabled"
                                             data-bs-toggle="tooltip" aria-label="Delete" data-bs-original-title="Delete">
                                             <i class="fa fa-times"></i>
