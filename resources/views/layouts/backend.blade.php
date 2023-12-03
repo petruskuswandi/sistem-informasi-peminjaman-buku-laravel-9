@@ -218,7 +218,7 @@
                                                 href="/books">Books</a>
                                         </li>
                                         <li>
-                                            <a @if (request()->is('category')) class="active" @endif
+                                            <a @if (request()->is('category*')) class="active" @endif
                                                 href="/category">Category</a>
                                         </li>
                                         <li>
