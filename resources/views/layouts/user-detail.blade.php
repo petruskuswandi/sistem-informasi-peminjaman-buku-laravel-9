@@ -29,7 +29,7 @@
         @endif
         @if ($user->status == 'inactive')
             <div class="block-header d-flex justify-content-end">
-                <a href="/registered-users">
+                <a href="/user-approve/{{ $user->slug }}">
                     <button type="button" class="btn btn-success">
                         Approve User</button>
                 </a>
