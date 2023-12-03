@@ -18,8 +18,10 @@ use App\Http\Controllers\RentLogController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 // Example Routes
+Route::get('/',function(){
+return view('welcome');
+});
 
 Route::middleware(['only_guest'])->group(function () {
     Route::view('/', 'landing');
