@@ -10,5 +10,6 @@ Sistem Informasi Peminjaman Buku
 <div align="center">
   <img height="200" src="https://gitlab.com/petruskuswandi1/perpustakaan/-/raw/final/ERD-Diagram.jpg"  />
 </div>
+
 ## Link Video
-![Link Video] https://drive.google.com/file/d/1CYU5AhDEF1H5VpblLs5fQ6mOtBZyxdeF/view/
+[Video] (https://drive.google.com/file/d/1CYU5AhDEF1H5VpblLs5fQ6mOtBZyxdeF/view/)
