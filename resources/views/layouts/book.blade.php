@@ -2,6 +2,10 @@
 @section('title')
     Halaman Book
 @endsection
+@section('css_before')
+    <!-- Page JS Plugins CSS -->
+    <link rel="stylesheet" href="{{ asset('js/plugins/datatables/dataTables.bootstrap4.css') }}">
+@endsection
 @section('content')
     <!-- Page Content -->
     <div class="content">
@@ -36,7 +40,7 @@
                     </a>
                 </div>
             </div>
-            <table class="table table-hover table-vcenter">
+            <table class="table table-hover table-vcenter js-dataTable-full">
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 50px;">No. </th>
@@ -58,9 +62,12 @@
                             <th class="text-center" scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $item->book_code }}</td>
                             <td>{{ $item->title }}</td>
-                            <td>@foreach ($item->categories as $category)
-                                {{ $category->name }}<br>
-                            @endforeach</td>
+                            <td>
+                                @foreach ($item->categories as $category)
+                                    {{ $category->name }}
+                                    <br>
+                                @endforeach
+                            </td>
                             <td>{{ $item->status }}</td>
                             <td class="text-center">
                                 <div class="btn-group" style="gap: 8px">
@@ -86,4 +93,12 @@
         </div>
     </div>
     <!-- END Page Content -->
+@endsection
+@section('js_after')
+    <!-- Page JS Plugins -->
+    <script src="{{ asset('js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+    <!-- Page JS Code -->
+    <script src="{{ asset('js/pages/tables_datatables.js') }}"></script>
 @endsection
