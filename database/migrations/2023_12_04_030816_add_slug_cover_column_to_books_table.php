@@ -32,7 +32,7 @@ return new class extends Migration
             }
 
             if (Schema::hasColumn('books', 'cover')) {
-                $table->dropColumn('cpver');
+                $table->dropColumn('cover');
             }
         });
     }

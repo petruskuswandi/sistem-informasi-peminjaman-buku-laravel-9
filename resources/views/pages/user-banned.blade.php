@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 @section('title')
-    Halaman User List
+    Halaman Banned Users List
 @endsection
 @section('css_before')
     <!-- Page JS Plugins CSS -->
@@ -18,13 +18,8 @@
     <!-- Page Content -->
     <div class="content">
         <div class="my-50 text-center">
-            <h2 class="font-w700 text-black mb-10">DataTables Users</h2>
+            <h2 class="font-w700 text-black mb-10">DataTables Banned Users</h2>
             <h3 class="h5 text-muted mb-0">Plugin Integration</h3>
-        </div>
-
-        <div class="mt-5 d-flex justify-content-end">
-            <a href="/user-banned" class="btn btn-secondary" style="margin-right: 10px">View Banned User</a>
-            <a href="/registered-users" class="btn btn-primary">New Registered User</a>
         </div>
         <div class="mt-5">
             @if (session('status'))
@@ -44,21 +39,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $item)
+                    @foreach ($bannedUsers as $item)
                         <tr>
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="text-center">{{ $item->username }}</td>
                             <td class="text-center">{{ $item->phone }}</td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a href="/user-detail/{{ $item->slug }}">
-                                        <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Detail">
-                                            <i class="fa fa-info"></i>
-                                        </button>
-                                    </a>
-                                    <a href="/user-ban/{{ $item->slug }}">
-                                        <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Ban User">
-                                            <i class="fa fa-ban"></i>
+                                    <a href="/user-restore/{{ $item->slug }}">
+                                        <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Restore">
+                                            <i class="fa fa-undo"></i>
                                         </button>
                                     </a>
                                 </div>
