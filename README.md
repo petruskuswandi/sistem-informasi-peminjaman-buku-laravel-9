@@ -12,4 +12,4 @@ Sistem Informasi Peminjaman Buku
 </div>
 
 ## Link Video
-[Video] (https://drive.google.com/file/d/1CYU5AhDEF1H5VpblLs5fQ6mOtBZyxdeF/view/)
+- Video (https://drive.google.com/file/d/1CYU5AhDEF1H5VpblLs5fQ6mOtBZyxdeF/view?usp=sharing)
