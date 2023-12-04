@@ -70,5 +70,10 @@
             </div>
         </div>
     </div>
+
+    <div class="mt-5">
+        <h1>User's Rent Log</h1>
+        <x-rent-log-table :rentlog='$rent_logs' />
+    </div>
     <!-- END Page Content -->
 @endsection

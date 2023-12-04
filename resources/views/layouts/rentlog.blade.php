@@ -1,9 +1,11 @@
 @extends('layouts.backend')
-@section('title')
-    Halaman rent log
-@endsection
+@section('title' 'Rent Log')
+
 @section('content')
-    <!-- Page Content -->
-    <h1>ini halaman rent logs</h1>
-    <!-- END Page Content -->
+    <h1>Rent Log List</h1>
+    
+        <div class="mt-5">
+            <x-rent-log-table :rentlog='$rent_logs' />
+        </div>
+   
 @endsection
