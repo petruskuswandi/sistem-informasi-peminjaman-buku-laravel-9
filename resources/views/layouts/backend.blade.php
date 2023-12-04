@@ -211,16 +211,16 @@
                                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
                                         <ul>
                                             <li>
-                                                <a class="{{ request()->is('pages/datatables') ? ' active' : '' }}" href="/books">Books</a>
+                                                <a class="{{ request()->is('/books') ? ' active' : '' }}" href="/books">Books</a>
                                             </li>
                                             <li>
-                                                <a class="{{ request()->is('pages/datatables') ? ' active' : '' }}" href="/categories">Categories</a>
+                                                <a class="{{ request()->is('/categories') ? ' active' : '' }}" href="/categories">Categories</a>
                                             </li>
                                             <li>
-                                                <a class="{{ request()->is('pages/slick') ? ' active' : '' }}" href="/users">Users</a>
+                                                <a class="{{ request()->is('/users') ? ' active' : '' }}" href="/users">Users</a>
                                             </li>
                                             <li>
-                                                <a class="{{ request()->is('pages/blank') ? ' active' : '' }}" href="/rent-logs">Rent Log</a>
+                                                <a class="{{ request()->is('/rent-logs') ? ' active' : '' }}" href="/rent-logs">Rent Log</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -240,7 +240,7 @@
                                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
                                         <ul>
                                             <li>
-                                                <a class="{{ request()->is('pages/datatables') ? ' active' : '' }}" href="/profile">Profile</a>
+                                                <a class="{{ request()->is('/profile') ? ' active' : '' }}" href="/profile">Profile</a>
                                             </li>
                                         </ul>
                                     </li>

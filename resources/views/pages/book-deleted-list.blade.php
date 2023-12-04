@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 @section('title')
-    Halaman Book
+    Halaman Deleted Book List
 @endsection
 @section('css_before')
     <!-- Page JS Plugins CSS -->
@@ -17,14 +17,9 @@
 @section('content')
     <!-- Page Content -->
     <div class="content">
-        <div class="my-50 text-center">
-            <h2 class="font-w700 text-black mb-10">DataTables Books</h2>
-            <h3 class="h5 text-muted mb-0">Plugin Integration</h3>
-        </div>
-
+        <h2 class="content-heading">Book <small>List</small></h2>
         <div class="mt-5 d-flex justify-content-end">
-            <a href="/book-deleted" class="btn btn-secondary" style="margin-right: 10px">View Deleted Data</a>
-            <a href="/book-add" class="btn btn-primary">Add Data</a>
+            <a href="/books" class="btn btn-primary">Back</a>
         </div>
         <div class="mt-5">
             @if (session('status'))
@@ -40,33 +35,20 @@
                         <th class="text-center">No.</th>
                         <th class="text-center">Code</th>
                         <th class="text-center">Title</th>
-                        <th class="text-center">Category</th>
-                        <th class="text-center">Status</th>
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($books as $item)
+                    @foreach ($deletedBooks as $item)
                         <tr>
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="text-center">{{ $item->book_code }}</td>
                             <td class="text-center">{{ $item->title }}</td>
                             <td class="text-center">
-                                @foreach ($item->categories as $category)
-                                    {{ $category->name }} <br>
-                                @endforeach
-                            </td>
-                            <td class="text-center">{{ $item->status }}</td>
-                            <td class="text-center">
                                 <div class="btn-group">
-                                    <a href="/book-edit/{{ $item->slug }}">
-                                        <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
-                                            <i class="fa fa-pencil"></i>
-                                        </button>
-                                    </a>
-                                    <a href="/book-delete/{{ $item->slug }}">
-                                        <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
-                                            <i class="fa fa-times"></i>
+                                    <a href="/book-restore/{{ $item->slug }}">
+                                        <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Restore">
+                                            <i class="fa fa-undo"></i>
                                         </button>
                                     </a>
                                 </div>
