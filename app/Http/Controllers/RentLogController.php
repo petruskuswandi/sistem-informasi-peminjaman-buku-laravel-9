@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class RentLogController extends Controller
 {
     public function index(){
-        return view("layouts.rentlog");
+        $rentlogs = RentLogs::with(['user', 'book'])->get();
+        return view('layouts.rentlog', ['rent_logs' => $rentlogs]);
     }
 }
