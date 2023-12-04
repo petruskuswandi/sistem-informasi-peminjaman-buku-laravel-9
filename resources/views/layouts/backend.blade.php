@@ -89,12 +89,14 @@
                         <!-- END Close Side Overlay -->
 
                         <!-- User Info -->
-                        <div class="content-header-item">
-                            <a class="img-link mr-5" href="javascript:void(0)">
-                                <img class="img-avatar img-avatar32" src="{{ asset('media/avatars/avatar15.jpg') }}" alt="">
-                            </a>
-                            <a class="align-middle link-effect text-primary-dark font-w600" href="javascript:void(0)">{{ Auth::user()->username }}</a>
-                        </div>
+                        @auth
+                            <div class="content-header-item">
+                                <a class="img-link mr-5" href="javascript:void(0)">
+                                    <img class="img-avatar img-avatar32" src="{{ asset('media/avatars/avatar15.jpg') }}" alt="">
+                                </a>
+                                <a class="align-middle link-effect text-primary-dark font-w600" href="javascript:void(0)">{{ Auth::user()->username }}</a>
+                            </div>
+                        @endauth
                         <!-- END User Info -->
                     </div>
                 </div>
@@ -175,9 +177,11 @@
                                     <img class="img-avatar" src="{{ asset('media/avatars/avatar15.jpg') }}" alt="">
                                 </a>
                                 <ul class="list-inline mt-10">
-                                    <li class="list-inline-item">
-                                        <a class="link-effect text-dual-primary-dark font-size-sm font-w600 text-uppercase" href="javascript:void(0)">{{ Auth::user()->username }}</a>
-                                    </li>
+                                    @auth
+                                        <li class="list-inline-item">
+                                            <a class="link-effect text-dual-primary-dark font-size-sm font-w600 text-uppercase" href="javascript:void(0)">{{ Auth::user()->username }}</a>
+                                        </li>
+                                    @endauth
                                     <li class="list-inline-item">
                                         <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
                                         <a class="link-effect text-dual-primary-dark" data-toggle="layout" data-action="sidebar_style_inverse_toggle" href="javascript:void(0)">
@@ -198,61 +202,63 @@
                         <!-- Side Navigation -->
                         <div class="content-side content-side-full">
                             <ul class="nav-main">
-                                @if (Auth::user()->role_id == 1)
-                                    <li>
-                                        <a class="{{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
-                                            <i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-main-heading">
-                                        <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
-                                    </li>
-                                    <li class="{{ request()->is('pages/*') ? ' open' : '' }}">
-                                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
-                                        <ul>
-                                            <li>
-                                                <a class="{{ request()->is('/books') ? ' active' : '' }}" href="/books">Books</a>
-                                            </li>
-                                            <li>
-                                                <a class="{{ request()->is('/categories') ? ' active' : '' }}" href="/categories">Categories</a>
-                                            </li>
-                                            <li>
-                                                <a class="{{ request()->is('/users') ? ' active' : '' }}" href="/users">Users</a>
-                                            </li>
-                                            <li>
-                                                <a class="{{ request()->is('/rent-logs') ? ' active' : '' }}" href="/rent-logs">Rent Log</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-main-heading">
-                                        <span class="sidebar-mini-visible">MR</span><span class="sidebar-mini-hidden">More</span>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="si si-globe"></i><span class="sidebar-mini-hide">Landing</span>
-                                        </a>
-                                    </li>
-                                @else
-                                    <li class="nav-main-heading">
-                                        <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
-                                    </li>
-                                    <li class="{{ request()->is('pages/*') ? ' open' : '' }}">
-                                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
-                                        <ul>
-                                            <li>
-                                                <a class="{{ request()->is('/profile') ? ' active' : '' }}" href="/profile">Profile</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-main-heading">
-                                        <span class="sidebar-mini-visible">MR</span><span class="sidebar-mini-hidden">More</span>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="si si-globe"></i><span class="sidebar-mini-hide">Landing</span>
-                                        </a>
-                                    </li>
-                                @endif
+                                @auth
+                                    @if (Auth::user()->role_id == 1)
+                                        <li>
+                                            <a class="{{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
+                                                <i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-main-heading">
+                                            <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
+                                        </li>
+                                        <li class="{{ request()->is('pages/*') ? ' open' : '' }}">
+                                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
+                                            <ul>
+                                                <li>
+                                                    <a class="{{ request()->is('/books') ? ' active' : '' }}" href="/books">Books</a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ request()->is('/categories') ? ' active' : '' }}" href="/categories">Categories</a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ request()->is('/users') ? ' active' : '' }}" href="/users">Users</a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ request()->is('/rent-logs') ? ' active' : '' }}" href="/rent-logs">Rent Log</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="nav-main-heading">
+                                            <span class="sidebar-mini-visible">MR</span><span class="sidebar-mini-hidden">More</span>
+                                        </li>
+                                        <li>
+                                            <a href="/">
+                                                <i class="si si-globe"></i><span class="sidebar-mini-hide">Landing</span>
+                                            </a>
+                                        </li>
+                                    @else
+                                        <li class="nav-main-heading">
+                                            <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
+                                        </li>
+                                        <li class="{{ request()->is('pages/*') ? ' open' : '' }}">
+                                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
+                                            <ul>
+                                                <li>
+                                                    <a class="{{ request()->is('/profile') ? ' active' : '' }}" href="/profile">Profile</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="nav-main-heading">
+                                            <span class="sidebar-mini-visible">MR</span><span class="sidebar-mini-hidden">More</span>
+                                        </li>
+                                        <li>
+                                            <a href="/">
+                                                <i class="si si-globe"></i><span class="sidebar-mini-hide">Landing</span>
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endauth
                             </ul>
                         </div>
                         <!-- END Side Navigation -->
@@ -358,7 +364,9 @@
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user d-sm-none"></i>
-                                <span class="d-none d-sm-inline-block">{{ Auth::user()->username }}</span>
+                                @auth
+                                    <span class="d-none d-sm-inline-block">{{ Auth::user()->username }}</span>
+                                @endauth
                                 <i class="fa fa-angle-down ml-5"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right min-width-200" aria-labelledby="page-header-user-dropdown">

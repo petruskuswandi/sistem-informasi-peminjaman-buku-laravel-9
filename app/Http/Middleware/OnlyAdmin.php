@@ -19,7 +19,7 @@ class OnlyAdmin
     {
         // Memeriksa apakah pengguna terotentikasi
         if (Auth::check() && Auth::user()->role_id != 1) {
-            return redirect('books');
+            return redirect('index');
         }
 
         // Jika pengguna terotentikasi dan memiliki role_id == 1, lanjutkan dengan request selanjutnya
