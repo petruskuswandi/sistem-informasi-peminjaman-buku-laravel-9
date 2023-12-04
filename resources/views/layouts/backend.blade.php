@@ -226,10 +226,12 @@
                                                 <a @if (request()->is('users*')) class="active" @endif
                                                     href="/users">Users</a>
                                             </li>
+
                                             <li>
                                                 <a @if (request()->is('rent-logs')) class="active" @endif
                                                     href="/rent-logs">Rent Log</a>
                                             </li>
+                                            
                                         </ul>
                                     </li>
                                     <li class="nav-main-heading">
@@ -239,6 +241,11 @@
                                     <li>
                                         <a href="/">
                                             <i class="si si-globe"></i><span class="sidebar-mini-hide">Landing</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/book-rent" @if (request()->is('book-rent')) class="active" @endif>
+                                            <i class="si si-globe"></i><span class="sidebar-mini-hide">Book Rent</span>
                                         </a>
                                     </li>
                                 @else

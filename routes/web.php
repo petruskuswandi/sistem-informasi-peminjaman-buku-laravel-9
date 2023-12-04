@@ -63,6 +63,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/user-destroy/{slug}', [UserController::class, 'destroy']);
         Route::get('/user-banned', [UserController::class, 'bannedUser']);
         Route::get('/user-restore/{slug}', [UserController::class, 'restore']);
+
+        Route::get('book-rent', [BookRentController::class, 'index']);
+        Route::post('book-rent', [BookRentController::class, 'store']);
     });
 
     Route::get('/rent-logs', [RentLogController::class, 'index']);

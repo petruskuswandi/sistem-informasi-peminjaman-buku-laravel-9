@@ -7,10 +7,21 @@ use Illuminate\Http\Request;
 
 class PublicController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::all();
-        $books = Book::all();
+
+        if ($request->category || $request->title){
+                $books = Book::where('title', 'like', '%'.$request->title.'%')
+                        ->orWhereHas('categories', function ($q) use ($request){
+                            $q->where('categories.id', $request->category);
+                        })
+                        ->get();
+        }
+        else{
+            $books = Book::all();
+        }
+        
         return view('book-list', ['books => $books', 'categories'=>$categories]);
     }
 }
