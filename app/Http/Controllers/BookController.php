@@ -48,7 +48,6 @@ class BookController extends Controller
     {
         $newName = '';
         if ($request->file('image') != null) {
-            dd('gambar');
             $extension = $request->file('image')->getClientOriginalExtension();
             $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
             $request->file('image')->storeAs('cover', $newName);
