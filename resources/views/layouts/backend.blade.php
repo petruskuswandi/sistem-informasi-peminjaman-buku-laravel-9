@@ -248,6 +248,10 @@
                                             <i class="si si-globe"></i><span class="sidebar-mini-hide">Book Rent</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="book-return" @if (request()->is('book-renturn')) class="active" @endif>Book Return</a>
+                                    </li>
+                                    
                                 @else
                                     <li class="nav-main-heading">
                                         <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
