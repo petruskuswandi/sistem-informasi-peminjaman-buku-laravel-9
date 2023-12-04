@@ -28,18 +28,6 @@
             </div>
         @endif
         <div class="mt-3 block block-rounded">
-            <div class="block-header block-header-default d-flex justify-content-end">
-                <div class="block-options" style="gap: 16px">
-                    <a href="/users-add">
-                        <button type="button" class="btn btn-danger">
-                            View Banned User</button>
-                    </a>
-                    <a href="/registered-users">
-                        <button type="button" class="btn btn-primary">
-                            New Registered User</button>
-                    </a>
-                </div>
-            </div>
             <table class="table table-hover table-vcenter">
                 <thead>
                     <tr>
