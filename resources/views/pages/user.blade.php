@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 @section('title')
-    Halaman Blank
+    Halaman User
 @endsection
 @section('content')
     <!-- Page Content -->

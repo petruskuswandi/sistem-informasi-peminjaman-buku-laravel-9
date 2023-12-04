@@ -7,7 +7,7 @@
     <div class="content">
         <div class="my-50 text-center">
             <h2 class="font-w700 text-black mb-10">Dashboard</h2>
-            <h3 class="h5 text-muted mb-0">Welcome to your app.</h3>
+            <h3 class="h5 text-muted mb-0">Welcome {{ Auth::user()->username }} to your app.</h3>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-6 col-xl-5">

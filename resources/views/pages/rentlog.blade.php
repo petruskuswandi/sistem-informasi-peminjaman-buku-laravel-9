@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 @section('title')
-    Halaman Slick Slider
+    Halaman Rent Log
 @endsection
 @section('css_before')
     <link rel="stylesheet" href="{{ asset('js/plugins/slick/slick.css') }}">

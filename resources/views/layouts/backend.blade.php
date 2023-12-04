@@ -93,7 +93,7 @@
                             <a class="img-link mr-5" href="javascript:void(0)">
                                 <img class="img-avatar img-avatar32" src="{{ asset('media/avatars/avatar15.jpg') }}" alt="">
                             </a>
-                            <a class="align-middle link-effect text-primary-dark font-w600" href="javascript:void(0)">John Smith</a>
+                            <a class="align-middle link-effect text-primary-dark font-w600" href="javascript:void(0)">{{ Auth::user()->username }}</a>
                         </div>
                         <!-- END User Info -->
                     </div>
@@ -176,7 +176,7 @@
                                 </a>
                                 <ul class="list-inline mt-10">
                                     <li class="list-inline-item">
-                                        <a class="link-effect text-dual-primary-dark font-size-sm font-w600 text-uppercase" href="javascript:void(0)">J. Smith</a>
+                                        <a class="link-effect text-dual-primary-dark font-size-sm font-w600 text-uppercase" href="javascript:void(0)">{{ Auth::user()->username }}</a>
                                     </li>
                                     <li class="list-inline-item">
                                         <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
@@ -211,13 +211,16 @@
                                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
                                         <ul>
                                             <li>
-                                                <a class="{{ request()->is('pages/datatables') ? ' active' : '' }}" href="/pages/datatables">Books</a>
+                                                <a class="{{ request()->is('pages/datatables') ? ' active' : '' }}" href="/books">Books</a>
                                             </li>
                                             <li>
-                                                <a class="{{ request()->is('pages/slick') ? ' active' : '' }}" href="/pages/slick">Users</a>
+                                                <a class="{{ request()->is('pages/datatables') ? ' active' : '' }}" href="/categories">Categories</a>
                                             </li>
                                             <li>
-                                                <a class="{{ request()->is('pages/blank') ? ' active' : '' }}" href="/pages/blank">Rent Log</a>
+                                                <a class="{{ request()->is('pages/slick') ? ' active' : '' }}" href="/users">Users</a>
+                                            </li>
+                                            <li>
+                                                <a class="{{ request()->is('pages/blank') ? ' active' : '' }}" href="/rent-logs">Rent Log</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -355,7 +358,7 @@
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user d-sm-none"></i>
-                                <span class="d-none d-sm-inline-block">J. Smith</span>
+                                <span class="d-none d-sm-inline-block">{{ Auth::user()->username }}</span>
                                 <i class="fa fa-angle-down ml-5"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right min-width-200" aria-labelledby="page-header-user-dropdown">

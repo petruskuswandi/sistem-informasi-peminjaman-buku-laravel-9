@@ -2,27 +2,101 @@
 @section('title')
     Halaman Dashboard
 @endsection
+@section('css_after')
+    <!-- Fonts and Codebase framework -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,400i,600,700&display=swap">
+    <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/codebase.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@endsection
 @section('content')
     <!-- Page Content -->
     <div class="content">
-        <div class="my-50 text-center">
-            <h2 class="font-w700 text-black mb-10">Dashboard</h2>
-            <h3 class="h5 text-muted mb-0">Welcome to your app.</h3>
+        <!-- Hero -->
+        <!-- jQuery Vide for video backgrounds, for more examples you can check out https://github.com/VodkaBears/Vide -->
+        <div class="block block-transparent bg-video" data-vide-bg="{{ asset('assets/media/videos/city_night.mp4') }}" data-vide-options="posterType: jpg">
+            <div class="block-content bg-primary-dark-op">
+                <div class="py-20 text-center">
+                    <h1 class="font-w700 text-white mb-10">Dashboard</h1>
+                    <h2 class="h4 font-w400 text-white-op">Welcome, {{ Auth::user()->username }}</h2>
+                </div>
+            </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-xl-5">
-                <div class="block">
-                    <div class="block-content">
-                        <p class="text-muted">
-                            We’ve put everything together, so you can start working on your Laravel project as soon as possible! Codebase assets are integrated and work seamlessly with Laravel Mix, so you can use the npm scripts as you would in any other Laravel project.
-                        </p>
-                        <p class="text-muted">
-                            Feel free to use any examples you like from the full versions to build your own pages. <strong>Wish you all the best and happy coding!</strong>
-                        </p>
+        <!-- END Hero -->
+
+        <!-- Dummy content -->
+        <div class="row my-5">
+            <div class="col-lg-4">
+                <div class="card-data book">
+                    <div class="row">
+                        <div class="col-6"><i class="bi bi-journal-bookmark"></i></div>
+                        <div class="col-6 d-flex flex-column justify-content-center align-items-end">
+                            <div class="card-desc">Books</div>
+                            <div class="card-count">{{ $book_count }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card-data category">
+                    <div class="row">
+                        <div class="col-6"><i class="bi bi-list-task"></i></div>
+                        <div class="col-6 d-flex flex-column justify-content-center align-items-end">
+                            <div class="card-desc">Categories</div>
+                            <div class="card-count">{{ $category_count }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card-data user">
+                    <div class="row">
+                        <div class="col-6"><i class="bi bi-people"></i></div>
+                        <div class="col-6 d-flex flex-column justify-content-center align-items-end">
+                            <div class="card-desc">Users</div>
+                            <div class="card-count">{{ $user_count }}</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="mt-5">
+            <h2>#Rent Logs</h2>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>User</th>
+                        <th>Book Title</th>
+                        <th>Rent Date</th>
+                        <th>Return Date</th>
+                        <th>Actual Return Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="7" style="text-align: center">No Data</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- END Dummy content -->
     </div>
     <!-- END Page Content -->
+@endsection
+@section('js_after')
+    <script src="{{ asset('assets/js/codebase.core.min.js') }}"></script>
+
+    <!--
+        Codebase JS
+
+        Custom functionality including Blocks/Layout API as well as other vital and optional helpers
+        webpack is putting everything together at assets/_js/main/app.js
+    -->
+    <script src="{{ asset('assets/js/codebase.app.min.js') }}"></script>
+
+    <!-- Page JS Plugins -->
+    <script src="{{ asset('assets/js/plugins/jquery-vide/jquery.vide.min.js') }}"></script>
 @endsection
