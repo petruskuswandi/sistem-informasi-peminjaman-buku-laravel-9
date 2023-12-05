@@ -227,6 +227,12 @@
                                                 <li>
                                                     <a class="{{ request()->is('/rent-logs') ? ' active' : '' }}" href="/rent-logs">Rent Log</a>
                                                 </li>
+                                                <li>
+                                                    <a class="{{ request()->is('/index') ? ' active' : '' }}" href="/index">Book List</a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ request()->is('/book-rent') ? ' active' : '' }}" href="/book-rent">Book Rent</a>
+                                                </li>
                                             </ul>
                                         </li>
                                         <li class="nav-main-heading">
@@ -246,6 +252,9 @@
                                             <ul>
                                                 <li>
                                                     <a class="{{ request()->is('/profile') ? ' active' : '' }}" href="/profile">Profile</a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ request()->is('/index') ? ' active' : '' }}" href="/index">Book List</a>
                                                 </li>
                                             </ul>
                                         </li>
