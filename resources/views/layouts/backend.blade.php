@@ -6,8 +6,8 @@
 
         <title>@yield('title')</title>
 
-        <meta name="description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-        <meta name="author" content="pixelcave">
+        <meta name="description" content="CreativePRS - Bootstrap 4 Admin Template &amp; UI Framework created by CreativePRS and published on Themeforest">
+        <meta name="author" content="CreativePRS">
         <meta name="robots" content="noindex, nofollow">
 
         <!-- CSRF Token -->
@@ -152,7 +152,7 @@
                             <div class="content-header-item">
                                 <a class="link-effect font-w700" href="/">
                                     <i class="si si-fire text-primary"></i>
-                                    <span class="font-size-xl text-dual-primary-dark">code</span><span class="font-size-xl text-primary">base</span>
+                                    <span class="font-size-xl text-dual-primary-dark">Creative</span><span class="font-size-xl text-primary">PRS</span>
                                 </a>
                             </div>
                             <!-- END Logo -->
@@ -531,10 +531,10 @@
             <footer id="page-footer">
                 <div class="content py-20 font-size-sm clearfix">
                     <div class="float-right">
-                        Crafted with <i class="fa fa-heart text-pulse"></i> by <a class="font-w600" href="https://1.envato.market/ydb" target="_blank">pixelcave</a>
+                        Crafted with <i class="fa fa-heart text-pulse"></i> by <a class="font-w600" href="https://1.envato.market/ydb" target="_blank">CreativePRS</a>
                     </div>
                     <div class="float-left">
-                        <a class="font-w600" href="https://1.envato.market/95j" target="_blank">Codebase</a> &copy; <span class="js-year-copy"></span>
+                        <a class="font-w600" href="https://1.envato.market/95j" target="_blank">Creative PRS</a> &copy; <span class="js-year-copy"></span>
                     </div>
                 </div>
             </footer>

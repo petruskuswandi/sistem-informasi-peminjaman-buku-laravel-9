@@ -91,36 +91,7 @@
             <main id="main-container">
 
                 @yield('content')
-                <!-- Call to Action -->
-                <div class="bg-white">
-                    <div class="content content-full text-center overflow-hidden">
-                        <div class="py-100">
-                            <h2 class="font-w700 mb-10">
-                                Crafted with <i class="fa fa-heart text-danger"></i> by <a class="link-effect" href="https://1.envato.market/ydb">pixelcave</a>
-                            </h2>
-                            <h3 class="h4 font-w400 text-muted mb-50">Passionate web design and development with over 14.000 customers worldwide.</h3>
-                            <a class="btn btn-hero btn-lg btn-noborder btn-alt-success mb-10 invisible" data-toggle="appear" data-class="animated zoomIn" href="https://1.envato.market/95j">
-                                <i class="fa fa-shopping-bag mr-10"></i> Purchase Codebase
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END Call to Action -->
 
-                <!-- Footer -->
-                <footer id="page-footer" class="opacity-0 bg-body-light">
-                    <div class="content py-50">
-                        <div class="row font-size-sm">
-                            <div class="col-sm-6 order-sm-2 py-1 text-center text-sm-right">
-                                Crafted with <i class="fa fa-heart text-pulse"></i> by <a class="font-w600" href="https://1.envato.market/ydb" target="_blank">pixelcave</a>
-                            </div>
-                            <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-left">
-                                <a class="font-w600" href="https://1.envato.market/95j" target="_blank">Codebase 4.0</a> &copy; <span class="js-year-copy"></span>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-                <!-- END Footer -->
             </main>
             <!-- END Main Container -->
         </div>

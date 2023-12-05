@@ -1,32 +1,48 @@
+/* Styling for card-data */
 .card-data {
-    border: solid 1px;
-    padding: 20px;
+    display: block;
+    text-decoration: none;
     color: #ffffff;
     text-align: center;
+    border: solid 1px;
+    padding: 20px;
+    transition: background-color 0.3s ease, box-shadow 0.2s ease, color 0.1s ease; /* Added color transition */
 }
 
+.card-data:hover,
+.card-data:active {
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for card-data.book */
 .card-data.book {
-    background-color: teal;
+    background-color: rgb(9, 163, 163);
 }
 
+/* Styling for card-data.category */
 .card-data.category {
     background-color: rgb(172, 65, 26);
 }
 
+/* Styling for card-data.user */
 .card-data.user {
     background-color: rgb(47, 22, 105);
 }
 
+/* Styling for icon */
 .card-data i {
     font-size: 80px;
     margin-bottom: 10px;
 }
 
+/* Styling for card-desc */
 .card-desc {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
+/* Styling for card-count */
 .card-count {
     font-size: 24px;
 }
