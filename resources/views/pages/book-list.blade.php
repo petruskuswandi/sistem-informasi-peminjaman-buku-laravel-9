@@ -122,11 +122,29 @@
                         Let your imagination build your idea with Codebase.
                     </h3>
                 </div>
+                <form action="" method="GET" class="mb-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <select name="category" id="category" class="form-control">
+                                <option value="">Select Category</option>
+                                @foreach ($categories as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="input-group mb-3">
+                                <input type="text" name="title" class="form-control" placeholder="Search book's title">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
                 <div class="row nice-copy my-10">
                     @foreach ($books as $item)
                         <div class="col-md-4 py-20">
                             <a class="options-container push" href="be_pages_dashboard.html">
-                                <img class="img-fluid options-item" src="{{ asset('images/cover-not-found.jpeg') }}" alt="Dashboard Default">
+                                <img class="img-fluid options-item" src="{{ $item->cover !== '' ? asset('storage/cover/'.$item->cover) : asset('images/cover-not-found.jpeg') }}" alt="{{ $item->cover }}">
                                 <div class="options-overlay bg-white-op-90">
                                     <div class="options-overlay-content h5 font-w700 text-uppercase">
                                         <i class="fa fa-link fa-4x"></i>
@@ -139,7 +157,7 @@
                             <p>
                                 {{ $item->title }}
                             </p>
-                            <p>{{ $item->status }}</p>
+                            <p class="{{ $item->status == 'in stock' ? 'text-success font-weight-bold' : 'text-danger font-weight-bold' }}">{{ $item->status }}</p>
                         </div>
                     @endforeach
                 </div>
