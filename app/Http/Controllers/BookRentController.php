@@ -87,4 +87,9 @@ class BookRentController extends Controller
             return redirect('book-rent');
         }
     }
+
+    public function returnBook()
+    {
+        return view('pages.return-book');
+    }
 }

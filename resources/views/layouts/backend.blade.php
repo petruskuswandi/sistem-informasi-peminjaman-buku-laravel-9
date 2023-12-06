@@ -233,6 +233,9 @@
                                                 <li>
                                                     <a class="{{ request()->is('/book-rent') ? ' active' : '' }}" href="/book-rent">Book Rent</a>
                                                 </li>
+                                                <li>
+                                                    <a class="{{ request()->is('/book-return') ? ' active' : '' }}" href="/book-return">Book Return</a>
+                                                </li>
                                             </ul>
                                         </li>
                                         <li class="nav-main-heading">

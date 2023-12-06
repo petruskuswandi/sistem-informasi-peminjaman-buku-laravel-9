@@ -2,12 +2,28 @@
 @section('title')
     Halaman Dashboard
 @endsection
+@section('css_before')
+    <link rel="stylesheet" href="{{ asset('js/plugins/datatables/dataTables.bootstrap4.css') }}">
+@endsection
 @section('css_after')
     <!-- Fonts and Codebase framework -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,400i,600,700&display=swap">
     <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/codebase.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@endsection
+@section('js_after')
+<!-- Page JS Plugins -->
+    <script src="{{ asset('js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+    <!-- Page JS Code -->
+    <script src="{{ asset('js/pages/tables_datatables.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/codebase.core.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/codebase.app.min.js') }}"></script>
+
+    <!-- Page JS Plugins -->
+    <script src="{{ asset('assets/js/plugins/jquery-vide/jquery.vide.min.js') }}"></script>
 @endsection
 @section('content')
     <!-- Page Content -->
@@ -60,43 +76,14 @@
                 </a>
             </div>
         </div>
-        <div class="mt-5">
-            <h2>#Rent Logs</h2>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>User</th>
-                        <th>Book Title</th>
-                        <th>Rent Date</th>
-                        <th>Return Date</th>
-                        <th>Actual Return Date</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="7" style="text-align: center">No Data</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="my-50 text-center">
+            <h2 class="font-w700 text-black mb-10">DataTables Rent Logs</h2>
+            <h3 class="h5 text-muted mb-0">Plugin Integration</h3>
+        </div>
+        <div class="my-5">
+            <x-rent-log-table :rentlog='$rent_logs' />
         </div>
         <!-- END Dummy content -->
     </div>
     <!-- END Page Content -->
-@endsection
-@section('js_after')
-    <script src="{{ asset('assets/js/codebase.core.min.js') }}"></script>
-
-    <!--
-        Codebase JS
-
-        Custom functionality including Blocks/Layout API as well as other vital and optional helpers
-        webpack is putting everything together at assets/_js/main/app.js
-    -->
-    <script src="{{ asset('assets/js/codebase.app.min.js') }}"></script>
-
-    <!-- Page JS Plugins -->
-    <script src="{{ asset('assets/js/plugins/jquery-vide/jquery.vide.min.js') }}"></script>
 @endsection
