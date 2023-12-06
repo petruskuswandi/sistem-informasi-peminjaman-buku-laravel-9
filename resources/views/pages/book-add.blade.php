@@ -37,6 +37,10 @@
 @endsection
 @section('content')
 <div class="content">
+    <div class="my-50 text-center">
+        <h2 class="font-w700 text-black mb-10">Book Add Form</h2>
+        <h3 class="h5 text-muted mb-0">Plugin Integration</h3>
+    </div>
     <div class="row justify-content-center py-20">
         <div class="col-xl-6">
             <!-- jQuery Validation functionality is initialized in js/pages/be_forms_validation.min.js which was auto compiled from _js/pages/be_forms_validation.js -->

@@ -3,6 +3,8 @@
     Halaman Rent Log
 @endsection
 @section('css_before')
+<!-- Page JS Plugins CSS -->
+<link rel="stylesheet" href="{{ asset('js/plugins/datatables/dataTables.bootstrap4.css') }}">
     <link rel="stylesheet" href="{{ asset('js/plugins/slick/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('js/plugins/slick/slick-theme.css') }}">
 @endsection
