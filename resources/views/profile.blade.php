@@ -16,7 +16,7 @@
 @endsection
 @section('content')
     <!-- Page Content -->
-    <div class="content">
+    {{-- <div class="content">
         <div class="my-50 text-center">
             <h2 class="font-w700 text-black mb-10">DataTables Your Rent Logs</h2>
             <h3 class="h5 text-muted mb-0">Plugin Integration</h3>
@@ -24,6 +24,10 @@
         <div class="my-5">
             <x-rent-log-table :rentlog='$rent_logs' />
         </div>
+    </div> --}}
+    <div class="mt-5">
+        <h1>Your Rent Log</h1>
+        <x-rent-log-table :rentlog='$rent_logs' />
     </div>
     <!-- END Page Content -->
 @endsection

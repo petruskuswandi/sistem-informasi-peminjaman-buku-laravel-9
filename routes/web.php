@@ -20,7 +20,6 @@ use App\Http\Controllers\DashboardController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 // Example Routes
 Route::view('/', 'landing');
 Route::get('/index', [PublicController::class, 'index']);
