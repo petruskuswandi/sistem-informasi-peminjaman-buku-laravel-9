@@ -6,9 +6,9 @@
 
     <title>@yield('title')</title>
 
-    <meta name="description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-    <meta name="author" content="pixelcave">
-    <meta name="robots" content="noindex, nofollow">
+        <meta name="description" content="CreativePRS - Bootstrap 4 Admin Template &amp; UI Framework created by CreativePRS and published on Themeforest">
+        <meta name="author" content="CreativePRS">
+        <meta name="robots" content="noindex, nofollow">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -91,17 +91,19 @@
                     </button>
                     <!-- END Close Side Overlay -->
 
-                    <!-- User Info -->
-                    <div class="content-header-item">
-                        <a class="img-link mr-5" href="javascript:void(0)">
-                            <img class="img-avatar img-avatar32" src="{{ asset('media/avatars/avatar15.jpg') }}" alt="">
-                        </a>
-                        <a class="align-middle link-effect text-primary-dark font-w600" href="javascript:void(0)">{{ Auth::user()->username }}</a>
+                        <!-- User Info -->
+                        @auth
+                            <div class="content-header-item">
+                                <a class="img-link mr-5" href="javascript:void(0)">
+                                    <img class="img-avatar img-avatar32" src="{{ asset('media/avatars/avatar15.jpg') }}" alt="">
+                                </a>
+                                <a class="align-middle link-effect text-primary-dark font-w600" href="javascript:void(0)">{{ Auth::user()->username }}</a>
+                            </div>
+                        @endauth
+                        <!-- END User Info -->
                     </div>
-                    <!-- END User Info -->
                 </div>
-            </div>
-            <!-- END Side Header -->
+                <!-- END Side Header -->
 
             <!-- Side Content -->
             <div class="content-side">
@@ -149,18 +151,18 @@
                         </button>
                         <!-- END Close Sidebar -->
 
-                        <!-- Logo -->
-                        <div class="content-header-item">
-                            <a class="link-effect font-w700" href="/">
-                                <i class="si si-fire text-primary"></i>
-                                <span class="font-size-xl text-dual-primary-dark">code</span><span class="font-size-xl text-primary">base</span>
-                            </a>
+                            <!-- Logo -->
+                            <div class="content-header-item">
+                                <a class="link-effect font-w700" href="/">
+                                    <i class="si si-fire text-primary"></i>
+                                    <span class="font-size-xl text-dual-primary-dark">Creative</span><span class="font-size-xl text-primary">PRS</span>
+                                </a>
+                            </div>
+                            <!-- END Logo -->
                         </div>
-                        <!-- END Logo -->
+                        <!-- END Normal Mode -->
                     </div>
-                    <!-- END Normal Mode -->
-                </div>
-                <!-- END Side Header -->
+                    <!-- END Side Header -->
 
                 <!-- Sidebar Scrolling -->
                 <div class="js-sidebar-scroll">
@@ -172,121 +174,112 @@
                         </div>
                         <!-- END Visible only in mini mode -->
 
-                        <!-- Visible only in normal mode -->
-                        <div class="sidebar-mini-hidden-b text-center">
-                            <a class="img-link" href="javascript:void(0)">
-                                <img class="img-avatar" src="{{ asset('media/avatars/avatar15.jpg') }}" alt="">
-                            </a>
-                            <ul class="list-inline mt-10">
-                                <li class="list-inline-item">
-                                    <a class="link-effect text-dual-primary-dark font-size-sm font-w600 text-uppercase" href="javascript:void(0)">{{ Auth::user()->username }}</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                                    <a class="link-effect text-dual-primary-dark" data-toggle="layout" data-action="sidebar_style_inverse_toggle" href="javascript:void(0)">
-                                        <i class="si si-drop"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="link-effect text-dual-primary-dark" href="/logout">
-                                        <i class="si si-logout"></i>
-                                    </a>
-                                </li>
+                            <!-- Visible only in normal mode -->
+                            <div class="sidebar-mini-hidden-b text-center">
+                                <a class="img-link" href="javascript:void(0)">
+                                    <img class="img-avatar" src="{{ asset('media/avatars/avatar15.jpg') }}" alt="">
+                                </a>
+                                <ul class="list-inline mt-10">
+                                    @auth
+                                        <li class="list-inline-item">
+                                            <a class="link-effect text-dual-primary-dark font-size-sm font-w600 text-uppercase" href="javascript:void(0)">{{ Auth::user()->username }}</a>
+                                        </li>
+                                    @endauth
+                                    <li class="list-inline-item">
+                                        <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                                        <a class="link-effect text-dual-primary-dark" data-toggle="layout" data-action="sidebar_style_inverse_toggle" href="javascript:void(0)">
+                                            <i class="si si-drop"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="link-effect text-dual-primary-dark" href="/logout">
+                                            <i class="si si-logout"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- END Visible only in normal mode -->
+                        </div>
+                        <!-- END Side User -->
+
+                        <!-- Side Navigation -->
+                        <div class="content-side content-side-full">
+                            <ul class="nav-main">
+                                @auth
+                                    @if (Auth::user()->role_id == 1)
+                                        <li>
+                                            <a class="{{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
+                                                <i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-main-heading">
+                                            <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
+                                        </li>
+                                        <li class="{{ request()->is('pages/*') ? ' open' : '' }}">
+                                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
+                                            <ul>
+                                                <li>
+                                                    <a class="{{ request()->is('/books') ? ' active' : '' }}" href="/books">Books</a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ request()->is('/categories') ? ' active' : '' }}" href="/categories">Categories</a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ request()->is('/users') ? ' active' : '' }}" href="/users">Users</a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ request()->is('/rent-logs') ? ' active' : '' }}" href="/rent-logs">Rent Log</a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ request()->is('/index') ? ' active' : '' }}" href="/index">Book List</a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ request()->is('/book-rent') ? ' active' : '' }}" href="/book-rent">Book Rent</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="nav-main-heading">
+                                            <span class="sidebar-mini-visible">MR</span><span class="sidebar-mini-hidden">More</span>
+                                        </li>
+                                        <li>
+                                            <a href="/">
+                                                <i class="si si-globe"></i><span class="sidebar-mini-hide">Landing</span>
+                                            </a>
+                                        </li>
+                                    @else
+                                        <li class="nav-main-heading">
+                                            <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
+                                        </li>
+                                        <li class="{{ request()->is('pages/*') ? ' open' : '' }}">
+                                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
+                                            <ul>
+                                                <li>
+                                                    <a class="{{ request()->is('/profile') ? ' active' : '' }}" href="/profile">Profile</a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ request()->is('/index') ? ' active' : '' }}" href="/index">Book List</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="nav-main-heading">
+                                            <span class="sidebar-mini-visible">MR</span><span class="sidebar-mini-hidden">More</span>
+                                        </li>
+                                        <li>
+                                            <a href="/">
+                                                <i class="si si-globe"></i><span class="sidebar-mini-hide">Landing</span>
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endauth
                             </ul>
                         </div>
-                        <!-- END Visible only in normal mode -->
+                        <!-- END Side Navigation -->
                     </div>
-                    <!-- END Side User -->
-
-                    <!-- Side Navigation -->
-                    <div class="content-side content-side-full">
-                        <ul class="nav-main">
-                            @if (Auth::user())
-                                @if (Auth::user()->role_id == 1)
-                                    <li>
-                                        <a class="{{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
-                                            <i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-main-heading">
-                                        <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
-                                    </li>
-                                    <li class="{{ request()->is('pages/*') ? ' open' : '' }}">
-                                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
-                                        <ul>
-                                            <li>
-                                                <a @if (request()->is('books*')) class="active" @endif
-                                                    href="/books">Books</a>
-                                            </li>
-                                            <li>
-                                                <a @if (request()->is('category*')) class="active" @endif
-                                                    href="/category">Category</a>
-                                            </li>
-                                            <li>
-                                                <a @if (request()->is('users*')) class="active" @endif
-                                                    href="/users">Users</a>
-                                            </li>
-
-                                            <li>
-                                                <a @if (request()->is('rent-logs')) class="active" @endif
-                                                    href="/rent-logs">Rent Log</a>
-                                            </li>
-                                            
-                                        </ul>
-                                    </li>
-                                    <li class="nav-main-heading">
-                                        <span class="sidebar-mini-visible">MR</span><span
-                                            class="sidebar-mini-hidden">More</span>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="si si-globe"></i><span class="sidebar-mini-hide">Landing</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/book-rent" @if (request()->is('book-rent')) class="active" @endif>
-                                            <i class="si si-globe"></i><span class="sidebar-mini-hide">Book Rent</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="book-return" @if (request()->is('book-renturn')) class="active" @endif>Book Return</a>
-                                    </li>
-                                    
-                                @else
-                                    <li class="nav-main-heading">
-                                        <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
-                                    </li>
-                                    <li class="{{ request()->is('pages/*') ? ' open' : '' }}">
-                                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Menu</span></a>
-                                        <ul>
-                                            <li>
-                                                <a class="{{ request()->is('pages/datatables') ? ' active' : '' }}" href="/profile">Profile</a>
-                                                {{-- <a href="/">book-list</a>
-                                                <a href="/logout"></a> Logout</a> --}}
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-main-heading">
-                                        <span class="sidebar-mini-visible">MR</span><span class="sidebar-mini-hidden">More</span>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="si si-globe"></i><span class="sidebar-mini-hide">Landing</span>
-                                        </a>
-                                    </li>
-                                @endif
-                            {{-- @else
-                                <a href="/login">Login</a> --}}
-                            @endif
-                        </ul>
-                    </div>
-                    <!-- END Side Navigation -->
+                    <!-- END Sidebar Scrolling -->
                 </div>
-                <!-- END Sidebar Scrolling -->
-            </div>
-            <!-- Sidebar Content -->
-        </nav>
-        <!-- END Sidebar -->
+                <!-- Sidebar Content -->
+            </nav>
+            <!-- END Sidebar -->
 
         <!-- Header -->
         <header id="page-header">
@@ -377,28 +370,30 @@
                 </div>
                 <!-- END Left Section -->
 
-                <!-- Right Section -->
-                <div class="content-header-section">
-                    <!-- User Dropdown -->
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user d-sm-none"></i>
-                            <span class="d-none d-sm-inline-block">{{ Auth::user()->username }}</span>
-                            <i class="fa fa-angle-down ml-5"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right min-width-200" aria-labelledby="page-header-user-dropdown">
-                            <h5 class="h6 text-center py-10 mb-5 border-b text-uppercase">User</h5>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="si si-user mr-5"></i> Profile
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                <span><i class="si si-envelope-open mr-5"></i> Inbox</span>
-                                <span class="badge badge-primary">3</span>
-                            </a>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="si si-note mr-5"></i> Invoices
-                            </a>
-                            <div class="dropdown-divider"></div>
+                    <!-- Right Section -->
+                    <div class="content-header-section">
+                        <!-- User Dropdown -->
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user d-sm-none"></i>
+                                @auth
+                                    <span class="d-none d-sm-inline-block">{{ Auth::user()->username }}</span>
+                                @endauth
+                                <i class="fa fa-angle-down ml-5"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right min-width-200" aria-labelledby="page-header-user-dropdown">
+                                <h5 class="h6 text-center py-10 mb-5 border-b text-uppercase">User</h5>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="si si-user mr-5"></i> Profile
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                                    <span><i class="si si-envelope-open mr-5"></i> Inbox</span>
+                                    <span class="badge badge-primary">3</span>
+                                </a>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="si si-note mr-5"></i> Invoices
+                                </a>
+                                <div class="dropdown-divider"></div>
 
                             <!-- Toggle Side Overlay -->
                             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
@@ -407,13 +402,13 @@
                             </a>
                             <!-- END Side Overlay -->
 
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="si si-logout mr-5"></i> Sign Out
-                            </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout">
+                                    <i class="si si-logout mr-5"></i> Sign Out
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <!-- END User Dropdown -->
+                        <!-- END User Dropdown -->
 
                     <!-- Notifications -->
                     <div class="btn-group" role="group">
@@ -544,20 +539,20 @@
         </main>
         <!-- END Main Container -->
 
-        <!-- Footer -->
-        <footer id="page-footer">
-            <div class="content py-20 font-size-sm clearfix">
-                <div class="float-right">
-                    Crafted with <i class="fa fa-heart text-pulse"></i> by <a class="font-w600" href="https://1.envato.market/ydb" target="_blank">pixelcave</a>
+            <!-- Footer -->
+            <footer id="page-footer">
+                <div class="content py-20 font-size-sm clearfix">
+                    <div class="float-right">
+                        Crafted with <i class="fa fa-heart text-pulse"></i> by <a class="font-w600" href="https://1.envato.market/ydb" target="_blank">CreativePRS</a>
+                    </div>
+                    <div class="float-left">
+                        <a class="font-w600" href="https://1.envato.market/95j" target="_blank">Creative PRS</a> &copy; <span class="js-year-copy"></span>
+                    </div>
                 </div>
-                <div class="float-left">
-                    <a class="font-w600" href="https://1.envato.market/95j" target="_blank">Codebase</a> &copy; <span class="js-year-copy"></span>
-                </div>
-            </div>
-        </footer>
-        <!-- END Footer -->
-    </div>
-    <!-- END Page Container -->
+            </footer>
+            <!-- END Footer -->
+        </div>
+        <!-- END Page Container -->
 
     <!-- Codebase Core JS -->
     <script src="{{ mix('js/codebase.app.js') }}"></script>

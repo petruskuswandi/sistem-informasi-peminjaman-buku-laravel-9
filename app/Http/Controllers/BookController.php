@@ -12,62 +12,85 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
-        return view("layouts.book", ["books" => $books]);
+        return view('pages.book', ['books' => $books]);
     }
 
     public function add()
     {
         $categories = Category::all();
-        return view("layouts.book-add", ["categories" => $categories]);
+        return view('pages.book-add', ['categories' => $categories]);
     }
-    public function store(Request $request)
+
+    public function store(Request $req)
     {
-        $validated = $request->validate([
+        $validated = $req->validate([
             'book_code' => 'required|unique:books|max:255',
             'title' => 'required|max:255',
         ]);
 
         $newName = '';
-        if ($request->file('image') != null) {
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
-            $request->file('image')->storeAs('cover', $newName);
+        if ($req->file('image')) {
+            $extension = $req->file('image')->getClientOriginalExtension();
+            $newName = $req->title . '-' . now()->timestamp . '.' . $extension;
+            $req->file('image')->storeAs('cover', $newName);
         }
-        $request['cover'] = $newName;
-        $book = Book::create($request->all());
-        $book->categories()->sync($request->categories);
-        return redirect("/books")->with("status", "Book Added Succesfully");
+
+        $req['cover'] = $newName;
+        $book = Book::create($req->all());
+        $book->categories()->sync($req->categories);
+        return redirect('books')->with('status', 'Book Added Successfully');
     }
+
     public function edit($slug)
     {
-        $book = Book::where("slug", $slug)->first();
+        $book = Book::where('slug', $slug)->first();
         $categories = Category::all();
-        return view("layouts.book-edit", ["book" => $book, "categories" => $categories]);
+        $selectedCategories = $book->categories->pluck('id')->toArray();
+        return view('pages.book-edit', ['book' => $book, 'categories' => $categories, 'selectedCategories' => $selectedCategories]);
     }
-    public function update(Request $request, $slug)
-    {
-        $newName = '';
-        if ($request->file('image') != null) {
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
-            $request->file('image')->storeAs('cover', $newName);
-        }
-        $request['cover'] = $newName;
 
-        $book = Book::where("slug", $slug)->first();
-        $book->categories()->sync($request->categories);
-        $book->update($request->all());
-        return redirect("/books")->with("status", "Book Updated Succesfully");
+    public function update(Request $req, $slug)
+    {
+        if ($req->file('image')) {
+            $extension = $req->file('image')->getClientOriginalExtension();
+            $newName = $req->title . '-' . now()->timestamp . '.' . $extension;
+            $req->file('image')->storeAs('cover', $newName);
+            $req['cover'] = $newName;
+        }
+
+        $book = Book::where('slug', $slug)->first();
+        $book->update($req->all());
+
+        if ($req->categories) {
+            $book->categories()->sync($req->categories);
+        }
+
+        return redirect('books')->with('status', 'Book Updated Successfully');
     }
+
     public function delete($slug)
     {
-        $book = Book::where("slug", $slug)->first();
-        return view("layouts.book-delete", ["book" => $book]);
+        $book = Book::where('slug', $slug)->first();
+        return view('pages.book-delete', ['book' => $book]);
     }
+
     public function destroy($slug)
     {
-        $book = Book::where("slug", $slug)->first();
+        $book = Book::where('slug', $slug)->first();
         $book->delete();
-        return redirect("/books")->with("deleteStatus", "Book Deleted Succesfully");
+        return redirect('books')->with('status', 'Book Deleted Successfully');
+    }
+
+    public function deletedBook()
+    {
+        $deletedBooks = Book::onlyTrashed()->get();
+        return view('pages.book-deleted-list', ['deletedBooks' => $deletedBooks]);
+    }
+
+    public function restore($slug)
+    {
+        $book = Book::withTrashed()->where('slug', $slug)->first();
+        $book->restore();
+        return redirect('books')->with('status', 'Book Restored Successfully');
     }
 }

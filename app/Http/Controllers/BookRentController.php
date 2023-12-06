@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Book;
 use App\Models\RentLogs;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -16,73 +16,75 @@ class BookRentController extends Controller
     {
         $users = User::where('id', '!=', 1)->where('status', '!=', 'inactive')->get();
         $books = Book::all();
-        return view('book-rent', ['users' => $users, 'books' => $books]);
+        return view('pages.book-rent', ['users' => $users, 'books' => $books]);
     }
 
-    public function store(Request $request)
+    public function store(Request $req)
     {
-        $request['rent_date'] = Carbon::now()->toDateString();
-        $request['return_date'] = Carbon::now()->addDay(3)->toDateString();
+        $unavailableBooks = [];
 
-        $book = Book::findOrFail($request->book_id)->only('status');
+        $req->validate([
+            'user_id' => 'required|exists:users,id',
+            'book_id' => 'required|array',
+            'book_id.*' => 'exists:books,id',
+        ]);
 
-        if ($book['status'] != 'in stock') {
-            Session::flash('message', 'Cannot rent, the book is not available');
-            Session::flash('alert-class', 'alert-danger');
-            return redirect('book-rent');
-        } else {
-            if (count($book) >= 3) {
-                Session::flash('message', 'cannot rent, user has reach limit of book');
-                Session::flash('alert-class', 'alert-danger');
-                return redirect('book-rent');
-            } else {
-                try {
-                    DB::beginTransaction();
-                    // process insert to rent_logs table
-                    RentLogs::create($request->all());
-                    // process update book table
-                    $book = Book::findOrFail($request->book_id);
-                    $book->status = 'not available';
-                    $book->save;
-                    DB::commit();
+        $req['rent_date'] = now()->toDateString();
+        $req['return_date'] = now()->addDay(3)->toDateString();
 
-                    Session::flash('message', 'Rent book success!!!');
-                    Session::flash('alert-class', 'alert-success');
-                    return redirect('/book-rent');
-                } catch (\Throwable $th) {
-                    DB::roolBack();
-                    // dd($th);
+        try {
+            DB::beginTransaction();
+
+            foreach ($req->book_id as $bookId) {
+                $book = Book::findOrFail($bookId);
+
+                if ($book->status != 'in stock') {
+                    $unavailableBooks[] = $book->title;
                 }
             }
-        }
-    }
-    public function returnBook()
-    {
-        $users = User::where('id', '!=', 1)->where('status', '!=', 'inactive')->get();
-        $books = Book::all();
-        return view('return-book', ['users' => $users, 'books' => $books]);
-    }
 
-    public function saveReturnBook(Request $request)
-    {
-        //user & buku yang dipilih untuk direturn benar, maka berhasil return buku
-        //user & buku yang dipilih untuk direturn salah, maka muncul error notice
-        $rent = RentLogs::where('user_id', $request->user_id)->where('book_id', $request->book_id)->where('actual_return_date', null);
-        $rentData = $rent->first();
-        $CountData = $rent->count();
+            if (!empty($unavailableBooks)) {
+                $errorMessage = 'Cannot rent, the following books are unavailable: ' . implode(', ', $unavailableBooks);
+                Session::flash('message', $errorMessage);
+                Session::flash('alert-class', 'alert-danger');
+                return redirect('book-rent');
+            }
 
-        if ($CountData == 1) {
-            //    akan return buku
-            $rentData->actual_return_data = Carbon::now()->toDateString();
-            $rentData->save();
-            Session::flash('message', 'The Book is returned successfully');
+            $count = RentLogs::where('user_id', $req->user_id)->where('actual_return_date', null)->count();
+
+            if ($count >= 3) {
+                Session::flash('message', 'Can\'t rent, user has reach limit of book');
+                Session::flash('alert-class', 'alert-danger');
+                return redirect('book-rent');
+            }
+            $rentLogsData = [];
+            foreach ($req->book_id as $bookId) {
+                $rentLogsData[] = [
+                    'user_id' => $req['user_id'],
+                    'book_id' => $bookId,
+                    'rent_date' => $req['rent_date'],
+                    'return_date' => $req['return_date'],
+                ];
+            }
+
+            RentLogs::insert($rentLogsData);
+            foreach ($req->book_id as $bookId) {
+                $book = Book::findOrFail($bookId);
+                $book->status = 'unavailable';
+                $book->save();
+            }
+
+            DB::commit();
+
+            Session::flash('message', 'Books rented successfully.');
             Session::flash('alert-class', 'alert-success');
-            return redirect('book-return');
-        } else {
-            // error notice muncul
-            Session::flash('message', 'There is error in process');
+            return redirect('book-rent');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            Session::flash('message', 'An error occurred. Please try again.');
             Session::flash('alert-class', 'alert-danger');
-            return redirect('book-return');
+            return redirect('book-rent');
         }
     }
 }

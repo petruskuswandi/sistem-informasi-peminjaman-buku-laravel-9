@@ -11,54 +11,62 @@ class UserController extends Controller
 {
     public function profile()
     {
-        $rentlogs = RentLogs::with(['user', 'book'])->where('user_id', Auth::user()->id)->get();
-        return view('profile', ['rent_logs' => $rentlogs] );
+        $rentlogs = RentLogs::with('user', 'book')->where('user_id', Auth::user()->id)->get();
+        return view('profile', ['rent_logs' => $rentlogs]);
     }
 
     public function index()
     {
-        $users =  User::where('role_id', 2)->where('status', 'active')->get();
-        return view('layouts.user', ['users' => $users]);
+        $users = User::where('role_id', 2)->where('status', 'active')->get();
+        return view('pages.user', ['users' => $users]);
     }
 
-    public function registeredUsers()
+    public function registeredUser()
     {
         $registeredUsers = User::where('status', 'inactive')->where('role_id', 2)->get();
-        return view('layouts.registered-users', ['registeredUsers' => $registeredUsers]);
+        return view('pages.registered-user', ['registeredUser' => $registeredUsers]);
     }
+
     public function show($slug)
-    {       
+    {
         $user = User::where('slug', $slug)->first();
-        $rentlogs = RentLogs::with(['user', 'book'])->where('user_id', $user->id)->get();
-        return view('layouts.user-detail', ['user' => $user, 'rent_logs' => $rentlogs]);
+        $rentlogs = RentLogs::with('user', 'book')->where('user_id', $user->id)->get();
+        return view('pages.user-detail', ['user' => $user, 'rent_logs' => $rentlogs]);
     }
+
     public function approve($slug)
     {
         $user = User::where('slug', $slug)->first();
         $user->status = 'active';
         $user->save();
 
-        return redirect('/user-detail/' . $slug)->with("status", "Approve User Succesfully");
+        return redirect('user-detail/' . $slug)->with('status', 'User Approved Successfully');
     }
+
     public function delete($slug)
     {
-        $user = User::where("slug", $slug)->first();
-        return view("layouts.user-ban", ["user" => $user]);
+        $user = User::where('slug', $slug)->first();
+        return view('pages.user-delete', ['user' => $user]);
     }
+
     public function destroy($slug)
     {
-        $user = User::where("slug", $slug)->first();
+        $user = User::where('slug', $slug)->first();
         $user->delete();
-        return redirect("/users")->with("deleteStatus", "Ban User Succesfully");
+
+        return redirect('users')->with('status', 'User Deleted Successfully');
     }
+
     public function bannedUser()
     {
         $bannedUsers = User::onlyTrashed()->get();
-        return view("layouts.user-banned-list", ['bannedUsers' => $bannedUsers]);
+        return view('pages.user-banned', ['bannedUsers' => $bannedUsers]);
     }
-    public function restore($slug){
-        $user = User::withTrashed()->where('slug', $slug)->first();
-        $user->restore();
-        return redirect("/users")->with("status", "user Restored Succesfully");
+
+    public function restore($slug)
+    {
+        $category = User::withTrashed()->where('slug', $slug)->first();
+        $category->restore();
+        return redirect('users')->with('status', 'Users Restored Successfully');
     }
 }

@@ -27,7 +27,8 @@ class CategorySeeder extends Seeder
 
         foreach ($data as $value) {
             Category::insert([
-                'name' => $value
+                'name' => $value,
+                'slug' => $value
             ]);
         }
     }

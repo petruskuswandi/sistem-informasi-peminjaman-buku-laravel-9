@@ -6,7 +6,6 @@ use Illuminate\View\Component;
 
 class RentLogTable extends Component
 {
-
     public $rentlog;
     /**
      * Create a new component instance.

@@ -90,9 +90,11 @@
             // Memeriksa cookie dan mengisi formulir jika ada
             var rememberMe = Cookies.get('rememberMe');
             var username = Cookies.get('username');
+            var password = Cookies.get('password');
 
-            if (rememberMe && username) {
+            if (rememberMe && username && password) {
                 $('#username').val(username);
+                $('#password').val(password);
                 $('#login-remember-me').prop('checked', true);
             }
 
@@ -101,16 +103,21 @@
                 // Simpan nilai checkbox "Remember Me" ke cookie jika dicentang
                 if ($('#login-remember-me').is(':checked')) {
                     var enteredUsername = $('#username').val();
+                    var enteredPassword = $('#password').val();
                     Cookies.set('rememberMe', true, {
                         expires: 7
                     }); // Cookie berlaku selama 7 hari
                     Cookies.set('username', enteredUsername, {
                         expires: 7
                     });
+                    Cookies.set('password', enteredPassword, {
+                        expires: 7
+                    });
                 } else {
                     // Hapus cookie jika checkbox tidak dicentang
                     Cookies.remove('rememberMe');
                     Cookies.remove('username');
+                    Cookies.remove('password');
                 }
             });
         });

@@ -19,7 +19,7 @@ class OnlyClient
     {
         // Memeriksa apakah pengguna terotentikasi
         if (Auth::check() && Auth::user()->role_id != 2) {
-            return redirect('/');
+            return redirect('index');
         }
 
         // Jika pengguna terotentikasi dan memiliki role_id == 1, lanjutkan dengan request selanjutnya

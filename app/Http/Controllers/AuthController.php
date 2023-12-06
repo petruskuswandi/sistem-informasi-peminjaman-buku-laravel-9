@@ -49,7 +49,7 @@ class AuthController extends Controller
             }
         }
         Session::flash('status', 'failed');
-        Session::flash('message', 'Login Invalid');
+        Session::flash('message', 'Invalid login credentials. Username or password not registered.');
         return redirect('/login');
     }
 
