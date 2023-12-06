@@ -14,7 +14,7 @@ class BookRentController extends Controller
 {
     public function index()
     {
-        $users = User::where('id', '!=', 1)->get();
+        $users = User::where('id', '!=', 1)->where('status', '!=', 'inactive')->get();
         $books = Book::all();
         return view('pages.book-rent', ['users' => $users, 'books' => $books]);
     }
@@ -50,6 +50,13 @@ class BookRentController extends Controller
                 return redirect('book-rent');
             }
 
+            $count = RentLogs::where('user_id', $req->user_id)->where('actual_return_date', null)->count();
+
+            if ($count >= 3) {
+                Session::flash('message', 'Can\'t rent, user has reach limit of book');
+                Session::flash('alert-class', 'alert-danger');
+                return redirect('book-rent');
+            }
             $rentLogsData = [];
             foreach ($req->book_id as $bookId) {
                 $rentLogsData[] = [
@@ -61,6 +68,11 @@ class BookRentController extends Controller
             }
 
             RentLogs::insert($rentLogsData);
+            foreach ($req->book_id as $bookId) {
+                $book = Book::findOrFail($bookId);
+                $book->status = 'unavailable';
+                $book->save();
+            }
 
             DB::commit();
 

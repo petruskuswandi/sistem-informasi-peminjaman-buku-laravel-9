@@ -51,6 +51,10 @@
                 <label for="" class="form-label">Status</label>
                 <input type="text" class="form-control" readonly value="{{ $user->status }}">
             </div>
+            <div class="mb-3">
+                <label for="" class="form-label">User's Rent Log</label>
+                <x-rent-log-table :rentlog='$rent_logs' />
+            </div>
         </div>
     </div>
     <!-- END Page Content -->
