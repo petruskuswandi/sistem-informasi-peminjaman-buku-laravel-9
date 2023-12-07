@@ -20,7 +20,7 @@
     <!-- Page JS Code -->
     <script src="{{ asset('js/pages/tables_datatables.js') }}"></script>
 
-    <script src="{{ asset('assets/js/codebase.core.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/codebase.core.min.js') }}"></script> --}}
 
     <script src="{{ asset('assets/js/codebase.app.min.js') }}"></script>
 
