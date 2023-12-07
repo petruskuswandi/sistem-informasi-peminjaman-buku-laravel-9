@@ -49,7 +49,7 @@
                     </div>
                 @endif
             </div>
-            <form class="js-validation-bootstrap" action="/book-rent" method="post">
+            <form class="js-validation-bootstrap" action="/book-return" method="post">
                 @csrf
                 <div class="form-group row">
                     <label class="col-lg-4 col-form-label" for="user">User <span class="text-danger">*</span></label>
@@ -67,7 +67,7 @@
                         <select class="js-select2 form-control" id="book" name="book_id[]" data-placeholder="Choose at least one category.." multiple>
                             <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                             @foreach ($books as $book)
-                                <option value="{{ $book->id }}">{{ $book->title }}</option>
+                                <option value="{{ $book->id }}">{{ $book->book_code }} {{ $book->title }}</option>
                             @endforeach
                         </select>
                     </div>
