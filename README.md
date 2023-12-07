@@ -11,7 +11,7 @@ Sistem Informasi Peminjaman Buku
   <img height="200" src="https://gitlab.com/petruskuswandi1/perpustakaan/-/raw/final/ERD-Diagram.jpg"  />
 </div>
 ## SISTEM INFORMASI RENTAL BUKU
-1. ada 2 jenis user : admin, penyewa
+1. **ada 2 jenis user : admin, penyewa**
 2. buku bisa memiliki multiple kategori
 3. 1 judul buku bisa berjumlah lebih dari satu (dibedakan dengan kode buku)
 4. list buku bisa dilihat tanpa harus login
