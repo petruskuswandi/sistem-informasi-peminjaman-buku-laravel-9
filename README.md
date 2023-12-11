@@ -29,4 +29,4 @@ Sistem Informasi Peminjaman Buku
 13. Admin dapat melihat log peminjaman buku
 
 ## Link Video
-- [Video](https://drive.google.com/file/d/1CYU5AhDEF1H5VpblLs5fQ6mOtBZyxdeF/view?usp=sharing)
+- [Video](https://drive.google.com/file/d/1Rj0KbHAMxRP_ymBGcLDpJ4S8LZUAaVuU/view?usp=sharing)
